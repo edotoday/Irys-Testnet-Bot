@@ -1,0 +1,73 @@
+# ═══════════════════════════════════════════════════════════════════════════
+#                           APPLICATION CONFIGURATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+application_settings:
+  threads: 2 # number of threads to use, each thread will use one account
+  database_url: "sqlite://./database.sqlite3" # SQlite or postgres, e.g. sqlite://database.db or postgres://user:password@localhost/dbname
+  shuffle_accounts: true # shuffle accounts before starting the module
+  check_uniqueness_of_proxies: true # check if proxies are unique, if true then will remove duplicate proxies
+  disable_auto_proxy_change: false # disable automatic proxy change on error, if true then will not change proxy on error (for advanced users)
+
+
+attempts_and_delay_settings:
+  delay_before_start: # random delay before starting the module for each account
+    min: 0 # in seconds
+    max: 0 # in seconds
+
+  delay_between_games: # random delay between games
+    min: 10 # in seconds
+    max: 15 # in seconds
+
+  delay_for_game: # random delay for each game (how long to `play` each game before sending the score)
+    min: 10 # in seconds
+    max: 15 # in seconds
+
+  delay_between_tasks: # random delay between tasks, only for all-in-one module
+    min: 10 # in seconds
+    max: 20 # in seconds
+
+  error_delay: 10 # in seconds
+  max_faucet_attempts: 5
+  max_captcha_attempts: 5
+  max_games_attempts: 3
+  max_nft_mint_attempts: 3
+  max_tasks_attempts: 3
+
+
+captcha_settings:
+  captcha_solver: "capsolver" # options: 2captcha, anti_captcha, capsolver, solvium
+  max_captcha_solving_time: 60
+
+  solvium_captcha_api_key: ""
+  two_captcha_api_key: ""
+  anti_captcha_api_key: ""
+  capsolver_api_key: ""
+
+
+all_in_one_settings:
+  tasks_to_perform: # Tasks to perform in all-in-one module, you can choose any combination of tasks
+    - "faucet"
+    - "wait_for_balance"
+    - "top_up_game_balance"
+    - "play_games"
+    - "mint_omnihub_nft"
+
+
+games_settings:
+  top_up_amount: # amount to top up game balance
+    min: 0.015 # in IRYS
+    max: 0.020 # in IRYS
+
+  games_to_play: # list of games to play
+    - "snake"
+    - "asteroids"
+    - "hex-shooter"
+    - "missile-command"
+    - "spritetype"
+
+
+web3_settings:
+  verify_balance: true # verify balance after faucet and before topping up game balance, if true and balance i> 0 then skip faucet/top up
+  irys_rpc_url: "https://testnet-rpc.irys.xyz/v1/execution-rpc" # IRYS RPC URL
