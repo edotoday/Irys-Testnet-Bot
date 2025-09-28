@@ -76,7 +76,7 @@ class IrysGamesModule(Web3Wallet):
 
     async def complete_payment(self, initial_ts: int, score: int, session_id: str, game_type: GameType) -> tuple[str, str, int]:
         complete_at_ts = initial_ts + random.randint(2, 10) * 60 * 1000
-        message = f"I completed a snake game on Irys Arcade.\n    \nPlayer: {self.wallet_address}\nGame: {game_type}\nScore: {score}\nSession: {session_id}\nTimestamp: {complete_at_ts}\n\nThis signature confirms I own this wallet and completed this game."
+        message = f"I completed a {game_type} game on Irys Arcade.\n    \nPlayer: {self.wallet_address}\nGame: {game_type}\nScore: {score}\nSession: {session_id}\nTimestamp: {complete_at_ts}\n\nThis signature confirms I own this wallet and completed this game."
 
         signature = await self.get_signature(message)
         return message, signature, complete_at_ts
