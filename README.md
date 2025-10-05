@@ -18,7 +18,7 @@
 ## 💸 Free to Use
 
 **Irys Bot** is completely free to use.  
-No payments, no hidden fees — just download and start automating.
+No payments, no hidden fees — just download and start automating
 
 ---
 
